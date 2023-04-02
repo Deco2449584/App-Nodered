@@ -1,0 +1,185 @@
+[
+    {
+        "id": "c5d5b5ef.eb9268",
+        "type": "tab",
+        "label": "Control de Dispositivos",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "3b37b42e49b361aa",
+        "type": "websocket-listener",
+        "path": "/ws/example",
+        "wholemsg": "false"
+    },
+    {
+        "id": "27559113de6df4ed",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.10.30",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "37ac5b9ad1f8b239",
+        "type": "ewelink-credentials"
+    },
+    {
+        "id": "ec46184bf56a3bf7",
+        "type": "websocket in",
+        "z": "c5d5b5ef.eb9268",
+        "name": "",
+        "server": "3b37b42e49b361aa",
+        "client": "",
+        "x": 240,
+        "y": 260,
+        "wires": [
+            [
+                "49758cd0f6e41cb6"
+            ]
+        ]
+    },
+    {
+        "id": "38d138fe55e39816",
+        "type": "websocket out",
+        "z": "c5d5b5ef.eb9268",
+        "name": "",
+        "server": "3b37b42e49b361aa",
+        "client": "",
+        "x": 710,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "49758cd0f6e41cb6",
+        "type": "debug",
+        "z": "c5d5b5ef.eb9268",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "2b7a546e6d524193",
+        "type": "inject",
+        "z": "c5d5b5ef.eb9268",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 240,
+        "y": 380,
+        "wires": [
+            [
+                "d10ac53ddc3ddade"
+            ]
+        ]
+    },
+    {
+        "id": "d10ac53ddc3ddade",
+        "type": "function",
+        "z": "c5d5b5ef.eb9268",
+        "name": "function 1",
+        "func": "msg.payload = { \"id\": \"button1\", \"state\": \"on\" }\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 360,
+        "wires": [
+            [
+                "38d138fe55e39816",
+                "49758cd0f6e41cb6"
+            ]
+        ]
+    },
+    {
+        "id": "0799b96a1e3316be",
+        "type": "inject",
+        "z": "c5d5b5ef.eb9268",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 440,
+        "wires": [
+            [
+                "12b6a9fa35ce51b2"
+            ]
+        ]
+    },
+    {
+        "id": "12b6a9fa35ce51b2",
+        "type": "function",
+        "z": "c5d5b5ef.eb9268",
+        "name": "function 2",
+        "func": "msg.payload = { \"id\": \"button1\", \"state\": \"off\" }\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 420,
+        "wires": [
+            [
+                "38d138fe55e39816"
+            ]
+        ]
+    }
+]
