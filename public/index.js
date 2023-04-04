@@ -1,5 +1,5 @@
 // Crea una instancia de WebSocket que se conecta al servidor Node-RED
-const socket = new WebSocket('ws://192.168.20.29:1880/ws/example');
+const socket = new WebSocket('ws://192.168.40.32:1880/ws/example');
 
 //función para agregar el atributo data-id a un botón dado su ID
 function addDataIdToButton(id) {
@@ -45,17 +45,31 @@ function updateButtonState(command) {
   const id = command.id;
   const state = command.state;
   const button = document.querySelector(`[data-id="${id}"]`); // Buscar el botón por su id
-  
+
   if (button) {
     if (state === "on") {
-      button.classList.remove('off');
-      button.classList.add('on');
+      if (!button.classList.contains('on')) {
+        button.classList.remove('off');
+        button.classList.add('on');
+        // Enviar el nuevo estado a través del WebSocket a todas las conexiones
+        if (socket.readyState === WebSocket.OPEN) {
+          socket.send(JSON.stringify(command));
+          console.log("mensaje on enviado a todos los socket")
+        }
+      }
     } else if (state === "off") {
-      button.classList.remove('on');
-      button.classList.add('off');
+      if (!button.classList.contains('off')) {
+        button.classList.remove('on');
+        button.classList.add('off');
+        // Enviar el nuevo estado a través del WebSocket a todas las conexiones
+        if (socket.readyState === WebSocket.OPEN) {
+          socket.send(JSON.stringify(command));
+        }
+      }
     }
   }
 }
+
 
 // Agregar un evento de escucha para mensajes entrantes del servidor
 socket.addEventListener('message', (event) => {
