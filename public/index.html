@@ -1,14 +1,116 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>WebSocket Toggle</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>APP</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"/>
+ </head>
 <body>
-    <div class="button" id="button1"></div>
-    <div class="button" id="button2"></div>
-    <div class="button" id="button3"></div>
+  <div class="contenedor">
+    <div class="header"></div>
+    <div class="sidebar">
+        <div class="logo_content">
+          <div class="logo">
+            <i class="fas fa-home"></i>
+            <div class="logo_name">Home</div>
+          </div>
+          <i class="fas fa-bars" id="btn"></i>
+        </div>
+        <ul class="nav">
+          <li>
+            <a href="#">
+              <i class="fas fa-couch"></i>
+              <span class="link_name">Sala</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fas fa-desktop"></i>
+              <span class="link_name">Estudio</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fas fa-bed"></i>
+              <span class="link_name">Habitacion Principal</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fas fa-bath"></i>
+              <span class="link_name">Baño</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fas fa-lightbulb"></i>
+              <span class="link_name">Iluminacion</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fas fa-paperclip"></i>
+              <span class="link_name">Otros</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    <div class="contenido">
+      <div class="button" id="button1">
+        <i class="fas fa-lightbulb"></i>
+        <span class="sp">Bombillo</span class="sp">
+      </div>
+      <div class="button" id="button2">
+        <i class="fas fa-lightbulb"></i>
+        <span class="sp">Luz</span class="sp">
+    </div>
+    <div class="button" id="button3">
+        <i class="fas fa-adjust"></i>
+        <span class="sp">Intensidad</span class="sp">
+    </div>
+    <div class="button">
+        <i class="fas fa-sun"></i>
+        <span class="sp">Día</span class="sp">
+    </div>
+    <div class="button">
+        <i class="fas fa-moon"></i>
+        <span class="sp">Noche</span class="sp">
+    </div>
+    <div class="button">
+        <i class="fas fa-tv"></i>
+        <span class="sp">TV</span class="sp">
+    </div>
+    <div class="button">
+        <i class="fas fa-desktop"></i>
+        <span class="sp">Escritorio</span class="sp">
+    </div>
+    <div class="button">
+        <i class="fas fa-bed"></i>
+        <span class="sp">Dormitorio</span class="sp">
+    </div>
+    <div class="button">
+        <i class="fas fa-couch"></i>
+        <span class="sp">Sala de estar</span class="sp">
+    </div>
+    <div class="button">
+        <i class="fas fa-bath"></i>
+        <span class="sp">Baño</span class="sp">
+    </div>
+    <div class="button">
+        <i class="fas fa-bath"></i>
+        <span class="sp">baño2</span class="sp">
+    </div> 
+     <div class="button">
+        <i class="fas fa-lock"></i>
+        <span class="sp">puerta</span class="sp">
+    </div>
+    </div>
+    <div class="footer"></div>
+  </div>
     <script src="index.js"></script>
+    <script src="sidebar.js"></script>
 </body>
 </html>

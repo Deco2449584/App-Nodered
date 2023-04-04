@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MQTT.js Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.min.js"></script>
+  </head>
+  <body>
+    <input type="text" id="message" />
+    <button onclick="publish()">Publish</button>
+    <script>
+      // Configuración del cliente MQTT
+      const client = new Paho.MQTT.Client("192.168.20.29", 1883, "clientId");
+
+      // Conexión del cliente MQTT
+      client.connect({ onSuccess: onConnect });
+
+      function onConnect() {
+        console.log("Connected to MQTT broker");
+      }
+
+      // Publicación del mensaje
+      function publish() {
+        const topic = "mqtt";
+        const message = new Paho.MQTT.Message(
+          document.getElementById("message").value
+        );
+        message.destinationName = topic;
+        client.send(message);
+      }
+    </script>
+  </body>
+</html>

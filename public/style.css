@@ -1,21 +1,347 @@
-.button {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: #F7F7F7;
-    display: inline-block;
-    margin: 10px;
-    box-shadow: 0px 2px 0px #D1D1D1;
-    transition: background-color 0.2s;
+:root {
+  --color-one: #ffbf00;
+  --color-two: #c49a26;
+  --color-three: #292424;
+  --color-four: #d8c690;
+  --fondo-one: #1a1a1a;
+  --fondo-two: #ffbf00;
+  --fondo-three: #e5d9b6;
+}
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-image: url(/img/black.jpg);
+}
+@media only screen and (min-width: 769px) {
+  .contenedor {
+    background: transparent;
+    touch-action: pan-x pan-y;
+    width: 100vw;
+    height: 50vh;
+    display: grid;
+    grid-template-rows: 50px auto 50px;
+    grid-template-columns: 0fr 3fr;
+    grid-template-areas:
+      "sidebar header"
+      "sidebar contenido"
+      "sidebar footer";
   }
-  
+  .contenido {
+    width: 80%;
+    height: 100%;
+    background: transparent;
+    grid-area: contenido;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: space-evenly;
+    margin-right: 100px;
+    margin-left: 100px;
+  }
+  .header {
+    background: transparent;
+    grid-area: header;
+  }
+  .footer {
+    background: transparent;
+    grid-area: footer;
+  }
+  .contenido .button {
+    flex-basis: calc(10% - 10px);
+    height: 50px;
+    width: 50px;
+    margin: 5px;
+    background: transparent;
+    box-shadow: 0 1px 1px var(--color-two);
+    transition: all 0.3s ease;
+    border-radius: 100px;
+    padding: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .contenido .button:hover {
+    background-color: var(--fondo-two);
+  }
+  .contenido .button i:hover {
+    color: var(--color-three);
+  }
+  .contenido .button .sp:hover {
+    color: var(--color-three);
+  }
+  .contenido .button .sp {
+    color: var(--color-four);
+  }
+  .contenido .button i {
+    font-size: 3rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+    display: block;
+  }
   .button.on {
-    background-color: #50E3C2;
-    box-shadow: 0px 2px 0px #3FC4A4;
+    background: var(--color-one);
   }
-  
-  .button.off {
-    background-color: #F7F7F7;
-    box-shadow: 0px 2px 0px #D1D1D1;
+  .button.on i {
+    color: var(--color-three);
   }
-  
+  .button.on .sp {
+    color: var(--color-three);
+  }
+  .sidebar {
+    grid-area: sidebar;
+    background-image: url(/img/black.jpg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50px;
+    padding: 6px 16px;
+    height: 100%;
+    transition: all 0.5s ease;
+    overflow: hidden;
+  }
+  .sidebar.active {
+    width: 200px;
+  }
+  .sidebar .logo_content .logo {
+    display: flex;
+    color: #ffffff;
+    height: 50px;
+    width: 200px;
+    font-size: 30px;
+    margin-left: 5px;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.3s;
+  }
+  .sidebar.active .logo_content .logo {
+    opacity: 1;
+  }
+
+  .sidebar .logo_content .logo .logo_name {
+    font-size: 23px;
+    font-weight: 600;
+    margin: 0 10px;
+  }
+  .sidebar #btn {
+    position: absolute;
+    color: #ffffff;
+    left: 50%;
+    top: 6px;
+    font-size: 20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    transform: translate(-50%);
+  }
+  .sidebar.active #btn {
+    left: 85%;
+  }
+  /* tamaño de los iconos */
+  .sidebar i {
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 25px;
+  }
+  .sidebar ul {
+    margin-top: 20px;
+  }
+  /* punticos en las listas */
+  .sidebar ul li {
+    position: relative;
+    height: 80px;
+    width: 100%;
+    margin: 0;
+    list-style: none;
+    line-height: 50px;
+  }
+  .sidebar ul li a {
+    color: #ffffff;
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    border-radius: 20px;
+    font-size: 13px;
+    white-space: nowrap;
+    transition: all 0.4s ease;
+  }
+  .sidebar ul li a:hover {
+    color: #ffffff;
+    background: #eed812;
+  }
+  .sidebar .link_name {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+  }
+  /* textos de las habitaciones */
+  .sidebar.active .link_name {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media only screen and (max-width: 769px) {
+  .contenedor {
+    background: transparent;
+    display: grid;
+    grid-template-rows: 50px auto 50px;
+    grid-template-columns: 0fr 1fr;
+    grid-template-areas:
+      "sidebar header"
+      "sidebar contenido"
+      "sidebar footer";
+  }
+  .contenido {
+    width: 70%;
+    height: 100%;
+    background: transparent;
+    grid-area: contenido;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: space-evenly;
+    margin-right: 100px;
+    margin-left: 100px;
+  }
+  .header {
+    background: transparent;
+    grid-area: header;
+  }
+  .footer {
+    background: transparent;
+    grid-area: footer;
+  }
+  .contenido .button {
+    height: 30px;
+    width: 30px;
+    margin: 10px;
+    background: transparent;
+    box-shadow: 0 1px 1px var(--color-two);
+    transition: all 0.3s ease;
+    border-radius: 100px;
+    padding: 20px;
+    margin-bottom: 1px;
+    text-align: center;
+    line-height: 10px;
+    font-weight: bold;
+    font-size: 7px;
+  }
+  .contenido .button .sp {
+    color: var(--color-four);
+  }
+  .contenido .button i {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 1px;
+    display: block;
+  }
+  .button.on {
+    background: var(--color-one);
+  }
+  .button.on i {
+    color: var(--color-three);
+  }
+  .button.on .sp {
+    color: var(--color-three);
+  }
+  .sidebar {
+    grid-area: sidebar;
+    background-image: url(/img/black.jpg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50px;
+    padding: 6px 16px;
+    height: 100%;
+    transition: all 0.5s ease;
+    overflow: hidden;
+  }
+  .sidebar.active {
+    width: 200px;
+  }
+  .sidebar .logo_content .logo {
+    display: flex;
+    color: #ffffff;
+    height: 50px;
+    width: 200px;
+    font-size: 30px;
+    margin-left: 5px;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.3s;
+  }
+  .sidebar.active .logo_content .logo {
+    opacity: 1;
+  }
+  .sidebar .logo_content .logo .logo_name {
+    font-size: 23px;
+    font-weight: 600;
+    margin: 0 10px;
+  }
+  .sidebar #btn {
+    position: absolute;
+    color: #ffffff;
+    left: 50%;
+    top: 6px;
+    font-size: 20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    transform: translate(-50%);
+  }
+  .sidebar.active #btn {
+    left: 85%;
+  }
+  /* tamaño de los iconos */
+  .sidebar i {
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 25px;
+  }
+  .sidebar ul {
+    margin-top: 20px;
+  }
+  /* punticos en las listas */
+  .sidebar ul li {
+    position: relative;
+    height: 80px;
+    width: 100%;
+    margin: 0;
+    list-style: none;
+    line-height: 50px;
+  }
+  .sidebar ul li a {
+    color: #ffffff;
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    border-radius: 20px;
+    font-size: 13px;
+    white-space: nowrap;
+    transition: all 0.4s ease;
+  }
+  .sidebar .link_name {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+  }
+  /* textos de las habitaciones */
+  .sidebar.active .link_name {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
