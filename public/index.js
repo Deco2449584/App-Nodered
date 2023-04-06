@@ -65,7 +65,7 @@ function updateButtonState(command) {
   const id = command.id;
   const state = command.state;
   const button = document.querySelector(`[data-id="${id}"]`); // Buscar el botón por su id
-  
+
   if (button) {
     if (state === "on") {
       button.classList.remove('off');
